@@ -8,12 +8,6 @@ public abstract class Pessoa {
 
     private final String nome;
 
-    /**
-     * Construtor de pessoa
-     *
-     * @param cod
-     * @param nome
-     */
     public Pessoa(final int cod, final String nome) {
 	this.cod = cod;
 	this.nome = nome;

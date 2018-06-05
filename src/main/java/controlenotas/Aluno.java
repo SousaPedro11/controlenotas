@@ -9,14 +9,20 @@ public class Aluno extends Pessoa {
 
     @Getter
     @Setter
-    private int matricula;
+    private static int matricula;
     @Getter
     @Setter
-    private String curso;
+    private static String curso;
     private Disciplina disciplina;
 
     public Aluno(final int cod, final String nome) {
 	super(cod, nome);
+    }
+
+    public Aluno(final int cod, final String nome, final int matricula, final String curso) {
+	super(cod, nome);
+	Aluno.matricula = matricula;
+	Aluno.curso = curso;
     }
 
     @Override
