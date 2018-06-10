@@ -4,7 +4,7 @@ Projeto de controle pessoal de rendimento acadêmico.
 Este projeto tem por finalidade inicial, criar uma aplicação de gerenciamento pessoal de notas e rendimento acadêmico.
 
 
-UTILIZAÇÃOO PELO USUÁRIO:
+UTILIZAÇÃO PELO USUÁRIO:
 
 1 - Cadastrar seus dados acadêmicos: Nome, Matrícula, Turma e etc.
 
