@@ -1,9 +1,9 @@
-package controlenotas;
+package controlenotas.classes;
 
 public class Professor extends Pessoa {
 
     public Professor(final int cod, final String nome) {
-	super(cod, nome);
+        super(cod, nome);
     }
 
 }

@@ -1,4 +1,4 @@
-package controlenotas;
+package controlenotas.classes;
 
 public class Turma {
 
