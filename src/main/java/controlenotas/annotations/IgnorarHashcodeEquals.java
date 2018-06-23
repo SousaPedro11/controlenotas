@@ -1,4 +1,4 @@
-package controlenotas.classes;
+package controlenotas.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,91 +1,118 @@
 package controlenotas.classes;
 
+import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
-public class ObjetoBase<T> {
+import controlenotas.annotations.AtribuirToString;
+import controlenotas.annotations.IEntidade;
+import controlenotas.annotations.Id;
+import controlenotas.annotations.IgnorarHashcodeEquals;
 
-	@Override
-	public int hashCode() {
+public class ObjetoBase<T, K extends Serializable> implements IEntidade<K> {
 
-		final HashCodeBuilder builder = new HashCodeBuilder();
+    @Override
+    public int hashCode() {
 
-		Stream.of(this.getClass().getDeclaredFields())
-				.filter(f -> !f.isAnnotationPresent(IgnorarHashcodeEquals.class)
-						|| (f.isAnnotationPresent(IgnorarHashcodeEquals.class)
-								&& !f.getAnnotation(IgnorarHashcodeEquals.class).desativarHashCode()))
-				.map(f -> f.getName()).forEach(nome -> {
+        final HashCodeBuilder builder = new HashCodeBuilder();
 
-					try {
-						final Object valor = FieldUtils.readDeclaredField(this, nome, true);
-						builder.append(valor);
+        Stream.of(this.getClass().getDeclaredFields())
+                        .filter(f -> !f.isAnnotationPresent(IgnorarHashcodeEquals.class)
+                                        || (f.isAnnotationPresent(IgnorarHashcodeEquals.class)
+                                                        && !f.getAnnotation(IgnorarHashcodeEquals.class).desativarHashCode()))
+                        .map(f -> f.getName()).forEach(nome -> {
 
-					} catch (final IllegalAccessException e) {
-						e.printStackTrace();
-					}
-				});
+                            try {
+                                final Object valor = FieldUtils.readDeclaredField(this, nome, true);
+                                builder.append(valor);
 
-		return builder.toHashCode();
-	}
+                            } catch (final IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
+                        });
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public boolean equals(final Object obj) {
+        return builder.toHashCode();
+    }
 
-		if (obj == null) {
-			return false;
-		}
-		if (obj == this) {
-			return true;
-		}
-		if (obj.getClass() != this.getClass()) {
-			return false;
-		}
+    @Override
+    @SuppressWarnings("unchecked")
+    public boolean equals(final Object obj) {
 
-		final T other = (T) obj;
-		final EqualsBuilder builder = new EqualsBuilder();
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
 
-		Stream.of(this.getClass().getDeclaredFields())
-				.filter(f -> !f.isAnnotationPresent(IgnorarHashcodeEquals.class)
-						|| (f.isAnnotationPresent(IgnorarHashcodeEquals.class)
-								&& !f.getAnnotation(IgnorarHashcodeEquals.class).desativarEquals()))
-				.map(f -> f.getName()).forEach(nome -> {
+        final T other = (T) obj;
+        final EqualsBuilder builder = new EqualsBuilder();
 
-					try {
-						final Object valor1 = FieldUtils.readDeclaredField(this, nome, true);
-						final Object valor2 = FieldUtils.readDeclaredField(other, nome, true);
+        Stream.of(this.getClass().getDeclaredFields())
+                        .filter(f -> !f.isAnnotationPresent(IgnorarHashcodeEquals.class)
+                                        || (f.isAnnotationPresent(IgnorarHashcodeEquals.class)
+                                                        && !f.getAnnotation(IgnorarHashcodeEquals.class).desativarEquals()))
+                        .map(f -> f.getName()).forEach(nome -> {
 
-						builder.append(valor1, valor2);
+                            try {
+                                final Object valor1 = FieldUtils.readDeclaredField(this, nome, true);
+                                final Object valor2 = FieldUtils.readDeclaredField(other, nome, true);
 
-					} catch (final IllegalAccessException e) {
-						e.printStackTrace();
-					}
-				});
+                                builder.append(valor1, valor2);
 
-		return builder.isEquals();
-	}
+                            } catch (final IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
+                        });
 
-	@Override
-	public String toString() {
+        return builder.isEquals();
+    }
 
-		final StringBuilder builder = new StringBuilder();
+    @Override
+    public String toString() {
 
-		FieldUtils.getFieldsListWithAnnotation(this.getClass(), AtribuirToString.class).forEach(f -> {
+        final StringBuilder builder = new StringBuilder();
 
-			try {
-				final Object valor = FieldUtils.readDeclaredField(this, f.getName(), true);
+        FieldUtils.getFieldsListWithAnnotation(this.getClass(), AtribuirToString.class).forEach(f -> {
 
-				final AtribuirToString annotation = f.getAnnotation(AtribuirToString.class);
-				builder.append(annotation.prefixo()).append(valor).append(annotation.sufixo());
+            try {
+                final Object valor = FieldUtils.readDeclaredField(this, f.getName(), true);
 
-			} catch (final IllegalAccessException e) {
-				e.printStackTrace();
-			}
-		});
+                final AtribuirToString annotation = f.getAnnotation(AtribuirToString.class);
+                builder.append(annotation.prefixo()).append(valor).append(annotation.sufixo());
 
-		return builder.toString();
-	}
+            } catch (final IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
+
+        return builder.toString();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public K getChavePrimaria() {
+
+        K chavePrimaria = null;
+        final List<Field> campos = FieldUtils.getFieldsListWithAnnotation(this.getClass(), Id.class);
+
+        if (!campos.isEmpty()) {
+
+            try {
+                chavePrimaria = (K) FieldUtils.readDeclaredField(this, campos.get(0).getName(), true);
+            } catch (final IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return chavePrimaria;
+    }
 }

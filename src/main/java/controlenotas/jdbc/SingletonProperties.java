@@ -1,7 +1,7 @@
 package controlenotas.jdbc;
 
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class SingletonProperties {
@@ -14,10 +14,11 @@ public class SingletonProperties {
 
         this.properties = new Properties();
 
-        try {
-            this.properties.load(new FileReader(nomeArquivo));
+        try (InputStream inputStream = ClassLoader.getSystemResourceAsStream(nomeArquivo)) {
+            this.properties.load(inputStream);
         } catch (final IOException e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         }
 
         return this;

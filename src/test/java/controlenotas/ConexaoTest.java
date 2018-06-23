@@ -3,8 +3,8 @@ package controlenotas;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.testng.Assert;
 
 import controlenotas.jdbc.SingletonConexao;
 import controlenotas.jdbc.SingletonProperties;
@@ -15,7 +15,7 @@ public class ConexaoTest {
     private Connection conexao;
 
     @Test
-    public void abrir() throws SQLException {
+    public void abrirTest() throws SQLException {
 
         try {
             final SingletonProperties properties = SingletonProperties.getInstancia("configuracao.properties");
@@ -32,13 +32,7 @@ public class ConexaoTest {
             System.exit(1);
         }
 
-        Assert.assertFalse(this.conexao.isClosed());
+        Assert.assertEquals(false, this.conexao.isClosed());
     }
 
-    // @Test
-    // public void fechada() throws SQLException {
-    //
-    // this.conexao.close();
-    // Assert.assertTrue(this.conexao.isClosed());
-    // }
 }

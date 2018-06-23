@@ -1,18 +1,31 @@
 package controlenotas.classes;
 
+import controlenotas.annotations.AtribuirToString;
+import controlenotas.annotations.Coluna;
+import controlenotas.annotations.Id;
+
 public class Disciplina {
 
+    @Id
+    @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
+    @AtribuirToString(prefixo = "Cod: ", sufixo = "\n")
     private int cod;
 
+    @Coluna(nome = "NOME", tamanho = 80)
+    @AtribuirToString(prefixo = "Nome: ", sufixo = "\n")
     private String nome;
+
+    @Coluna(nome = "SEMESTRE", tipo = "INT")
+    @AtribuirToString(prefixo = "Semestre: ", sufixo = "\n")
+    private int semestre;
+
+    @Coluna(nome = "CH", tipo = "INT")
+    @AtribuirToString(prefixo = "CH: ", sufixo = "\n")
+    private int cargahoraria;
 
     private Turma turma;
 
     private Professor professor;
-
-    private int semestre;
-
-    private int cargahoraria;
 
     public int getCod() {
 

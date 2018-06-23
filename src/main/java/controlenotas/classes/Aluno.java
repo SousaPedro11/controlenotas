@@ -3,12 +3,19 @@ package controlenotas.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import controlenotas.annotations.AtribuirToString;
+import controlenotas.annotations.Coluna;
+import controlenotas.annotations.Tabela;
 
+@Tabela(schema = "controlenotas", nome = "aluno")
 public class Aluno extends Pessoa {
 
+    @AtribuirToString(prefixo = "Matricula: ", sufixo = "\n")
+    @Coluna(nome = "MATRICULA", tipo = "INT")
     private int matricula;
 
+    @AtribuirToString(prefixo = "Curso: ", sufixo = "\n")
+    @Coluna(nome = "CURSO", tamanho = 80)
     private String curso;
 
     List<Disciplina> disc = new ArrayList<>();
@@ -43,9 +50,4 @@ public class Aluno extends Pessoa {
         this.curso = curso;
     }
 
-    @Override
-    public String toString() {
-
-        return ReflectionToStringBuilder.toString(this);
-    }
 }
