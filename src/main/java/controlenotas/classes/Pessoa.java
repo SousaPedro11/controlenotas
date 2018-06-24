@@ -1,28 +1,25 @@
 package controlenotas.classes;
 
 import controlenotas.annotations.AtribuirToString;
-import controlenotas.annotations.Coluna;
-import controlenotas.annotations.Id;
 
 public abstract class Pessoa extends ObjetoBase<Pessoa, Integer> {
 
-    @Id
-    @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
-    @AtribuirToString(prefixo = "Cod: ", sufixo = "\n")
-    private final int cod;
-
-    @Coluna(nome = "NOME", tamanho = 80)
+    // @Coluna(nome = "NOME", tamanho = 80)
     @AtribuirToString(prefixo = "Nome: ", sufixo = "\n")
-    private final String nome;
+    protected String nome;
 
-    public Pessoa(final int cod, final String nome) {
-        this.cod = cod;
+    public Pessoa(final String nome) {
+
         this.nome = nome;
     }
 
-    public int getCod() {
+    public Pessoa() {
 
-        return this.cod;
+    }
+
+    public void setNome(final String nome) {
+
+        this.nome = nome;
     }
 
     public String getNome() {

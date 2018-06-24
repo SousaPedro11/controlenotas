@@ -30,9 +30,17 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
     // Métodos abstratos
     public abstract T converter(final ResultSet rs) throws SQLException;
 
-    public abstract void alterar(final T objeto);
+    protected String getNomeTabela() {
 
-    protected abstract String getNomeTabela();
+        final StringBuilder nomeT = new StringBuilder();
+        final Tabela tabela = this.getClasseEntidade().getAnnotation(Tabela.class);
+        nomeT.append(tabela.schema());
+        nomeT.append(".");
+        nomeT.append(tabela.nome());
+
+        return nomeT.toString();
+
+    }
 
     /**
      * Método utilizado para criar uma conexão com o banco
@@ -208,7 +216,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
     public final void inserir(final T objeto) {
 
         final Map<String, Object> mapa = new LinkedHashMap<>(Stream.of(objeto.getClass().getDeclaredFields())
-                        .filter(f -> !f.isAnnotationPresent(Id.class))
+                        .filter(f -> !f.isAnnotationPresent(Id.class) && f.isAnnotationPresent(Coluna.class))
                         .collect(Collectors.toMap(f -> f.getAnnotation(Coluna.class).nome(),
                                         f -> {
                                             Object valor = null;
@@ -242,6 +250,38 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
         }
     }
 
+    public final void alterar(final T objeto, final K chavePrimaria) throws Exception {
+
+        final Map<String, Object> mapa = new LinkedHashMap<>(Stream.of(objeto.getClass().getDeclaredFields())
+                        .filter(f -> !f.isAnnotationPresent(Id.class))
+                        .collect(Collectors.toMap(f -> f.getAnnotation(Coluna.class).nome(),
+                                        f -> {
+                                            Object valor = null;
+                                            try {
+                                                valor = FieldUtils.readDeclaredField(objeto, f.getName(), true);
+                                            } catch (final IllegalAccessException e) {
+                                                e.printStackTrace();
+                                            }
+                                            return valor;
+                                        })));
+
+        final StringBuilder sb = new StringBuilder();
+        sb.append("UPDATE ");
+        sb.append(this.getNomeTabela());
+        sb.append(" SET ");
+        sb.append(mapa.keySet()
+                        .stream()
+                        .map(x -> x + " = ?")
+                        .collect(Collectors.joining(", ")));
+        sb.append("WHERE COD = ?");
+
+        try {
+            this.cadastrarInterno(sb.toString(), mapa, chavePrimaria);
+        } catch (final Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Método a ser utilizado para identificar se é uma inserção ou alteração no banco
      *
@@ -253,7 +293,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
     public void cadastrar(final T objeto) throws Exception {
 
         if (objeto.getChavePrimaria() != null) {
-            this.alterar(objeto);
+            this.alterar(objeto, objeto.getChavePrimaria());
         } else {
             this.inserir(objeto);
         }

@@ -1,6 +1,6 @@
 package controlenotas.DAO;
 
 
-public class disciplinaDAO {
+public class DisciplinaDAO {
 
 }
