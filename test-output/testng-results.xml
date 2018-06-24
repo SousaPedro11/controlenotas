@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="1" total="5" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="708" started-at="2018-06-24T03:24:12Z" finished-at="2018-06-24T03:24:13Z">
+  <suite name="Default suite" duration-ms="892" started-at="2018-06-24T22:41:15Z" finished-at="2018-06-24T22:41:16Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="708" started-at="2018-06-24T03:24:12Z" finished-at="2018-06-24T03:24:13Z">
+    <test name="Default test" duration-ms="892" started-at="2018-06-24T22:41:15Z" finished-at="2018-06-24T22:41:16Z">
       <class name="controlenotas.AlunoTest">
-        <test-method status="PASS" signature="criarTabela()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="criarTabela" duration-ms="611" started-at="2018-06-24T03:24:12Z" finished-at="2018-06-24T03:24:13Z">
+        <test-method status="PASS" signature="criarTabela()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="criarTabela" duration-ms="725" started-at="2018-06-24T22:41:15Z" finished-at="2018-06-24T22:41:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- criarTabela -->
-        <test-method status="PASS" signature="inserir()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="inserir" duration-ms="44" started-at="2018-06-24T03:24:13Z" finished-at="2018-06-24T03:24:13Z">
+        <test-method status="PASS" signature="deletar()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="deletar" duration-ms="66" started-at="2018-06-24T22:41:15Z" depends-on-methods="controlenotas.AlunoTest.criarTabela" finished-at="2018-06-24T22:41:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- inserir -->
+        </test-method> <!-- deletar -->
+        <test-method status="PASS" signature="listarPorID()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="listarPorID" duration-ms="6" started-at="2018-06-24T22:41:16Z" depends-on-methods="controlenotas.AlunoTest.criarTabela" finished-at="2018-06-24T22:41:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- listarPorID -->
+        <test-method status="PASS" signature="listartodos()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="listartodos" duration-ms="11" started-at="2018-06-24T22:41:16Z" depends-on-methods="controlenotas.AlunoTest.criarTabela" finished-at="2018-06-24T22:41:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- listartodos -->
       </class> <!-- controlenotas.AlunoTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

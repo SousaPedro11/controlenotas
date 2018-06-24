@@ -1,6 +1,6 @@
 package controlenotas;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import controlenotas.DAO.AlunoDAO;
 import controlenotas.DAO.BaseDAO;
@@ -16,7 +16,7 @@ public class AlunoTest {
         this.alunoDAO.criarDDL();
     }
 
-    @Test
+    @Test(dependsOnMethods = "criarTabela", enabled = false)
     public void inserir() {
 
         final Aluno aluno = new Aluno();
@@ -27,4 +27,27 @@ public class AlunoTest {
         this.alunoDAO.inserir(aluno);
     }
 
+    @Test(dependsOnMethods = "criarTabela")
+    public void deletar() {
+
+        final int cod = 12;
+        System.out.println("\nDELETAR REGISTRO: " + cod);
+        this.alunoDAO.buscarPor(cod);
+        this.alunoDAO.excluir(cod);
+    }
+
+    @Test(dependsOnMethods = "criarTabela")
+    public void listarPorID() {
+
+        final int cod = 10;
+        System.out.println("\nBUSCA POR COD = " + cod);
+        this.alunoDAO.buscarPor(cod);
+    }
+
+    @Test(dependsOnMethods = "criarTabela")
+    public void listartodos() {
+
+        System.out.println("\nBUSCA TODOS");
+        this.alunoDAO.buscarTodos();
+    }
 }

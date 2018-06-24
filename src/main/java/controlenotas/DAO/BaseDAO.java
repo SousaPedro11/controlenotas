@@ -200,7 +200,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
             System.out.println(t.get());
 
         } catch (final Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         return t;
