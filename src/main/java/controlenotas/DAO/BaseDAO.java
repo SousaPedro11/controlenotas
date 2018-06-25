@@ -7,7 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,29 +22,18 @@ import java.util.stream.Stream;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import controlenotas.annotations.Coluna;
+import controlenotas.annotations.DataType;
+import controlenotas.annotations.EnumType;
 import controlenotas.annotations.IEntidade;
 import controlenotas.annotations.Id;
 import controlenotas.annotations.Tabela;
 import controlenotas.jdbc.SingletonConexao;
 import controlenotas.jdbc.SingletonProperties;
 import controlenotas.jdbc.TipoConexao;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
-
-    // Métodos abstratos
-    public abstract T converter(final ResultSet rs) throws SQLException;
-
-    protected String getNomeTabela() {
-
-        final StringBuilder nomeT = new StringBuilder();
-        final Tabela tabela = this.getClasseEntidade().getAnnotation(Tabela.class);
-        nomeT.append(tabela.schema());
-        nomeT.append(".");
-        nomeT.append(tabela.nome());
-
-        return nomeT.toString();
-
-    }
 
     /**
      * Método utilizado para criar uma conexão com o banco
@@ -75,6 +68,17 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
     }
 
     // Métodos generalizados
+    protected String getNomeTabela() {
+
+        final StringBuilder nomeT = new StringBuilder();
+        final Tabela tabela = this.getClasseEntidade().getAnnotation(Tabela.class);
+        nomeT.append(tabela.schema());
+        nomeT.append(".");
+        nomeT.append(tabela.nome());
+
+        return nomeT.toString();
+
+    }
 
     /**
      * Cria tabelas no banco de dados a partir dos objetos utilizando Reflexão
@@ -99,6 +103,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
 
                             final StringBuilder sb = new StringBuilder();
                             final Id id = f.getAnnotation(Id.class);
+
                             final Coluna coluna = f.getAnnotation(Coluna.class);
                             sb.append("\t").append(coluna.nome() + " ")
                                             .append(coluna.tipo());
@@ -167,7 +172,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
             for (final T t : lista) {
                 System.out.println(t);
             }
-        } catch (final SQLException e) {
+        } catch (final SQLException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
 
@@ -379,4 +384,50 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
                         .getGenericSuperclass()).getActualTypeArguments()[posicaoGenerics];
     }
 
+    /**
+     * Método utilizado para converter Resultset para objeto
+     *
+     * @param rs
+     * @return {@code <T> Objeto}
+     * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public final T converter(final ResultSet rs) throws SQLException, InstantiationException, IllegalAccessException {
+
+        final T objeto = this.getClasseEntidade().newInstance();
+
+        Stream.of(objeto.getClass().getDeclaredFields())
+                        .filter(f -> f.isAnnotationPresent(Coluna.class))
+                        .forEach(f -> {
+                            try {
+                                f.setAccessible(true);
+                                if (f.isAnnotationPresent(DataType.class)) {
+                                    final DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                    final String dataform = formatter.format(rs.getObject("nascimento"));
+
+                                    Date localDate;
+                                    try {
+                                        localDate = formatter.parse(dataform);
+                                        f.set(objeto, localDate);
+                                    } catch (final ParseException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                } else if (f.isAnnotationPresent(EnumType.class)) {
+
+                                    f.set(objeto, Enum.valueOf((Class<Enum>) f.getType(), rs.getString(f.getName())));
+
+                                } else {
+                                    f.set(objeto, rs.getObject(f.getName()));
+                                }
+                            } catch (IllegalArgumentException | IllegalAccessException | SQLException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+        return objeto;
+
+    }
 }

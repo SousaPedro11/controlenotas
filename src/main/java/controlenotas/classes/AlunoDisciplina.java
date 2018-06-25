@@ -1,11 +1,17 @@
 package controlenotas.classes;
 
+import controlenotas.annotations.Fk;
+import controlenotas.annotations.Id;
+
 public class AlunoDisciplina extends ObjetoBase<AlunoDisciplina, Integer> {
 
+    @Id
     private int cod;
 
+    @Fk
     private int codAluno;
 
+    @Fk
     private int codDisciplina;
 
     public AlunoDisciplina() {

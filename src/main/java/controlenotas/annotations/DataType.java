@@ -7,13 +7,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Anotação criada para marcar PK.
+ * Anotacao para marcar sqlData
+ * 
+ * @author pedrosousa
  *
- * @author Pedro Sousa
  */
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Id {
+public @interface DataType {
 
 }

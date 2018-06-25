@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="5" passed="4">
+<testng-results skipped="0" failed="0" ignored="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="892" started-at="2018-06-24T22:41:15Z" finished-at="2018-06-24T22:41:16Z">
+  <suite name="Default suite" duration-ms="392" started-at="2018-06-25T23:04:01Z" finished-at="2018-06-25T23:04:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="892" started-at="2018-06-24T22:41:15Z" finished-at="2018-06-24T22:41:16Z">
-      <class name="controlenotas.AlunoTest">
-        <test-method status="PASS" signature="criarTabela()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="criarTabela" duration-ms="725" started-at="2018-06-24T22:41:15Z" finished-at="2018-06-24T22:41:15Z">
+    <test name="Default test" duration-ms="392" started-at="2018-06-25T23:04:01Z" finished-at="2018-06-25T23:04:01Z">
+      <class name="controlenotas.DisciplinaTest">
+        <test-method status="PASS" signature="criarTabela()[pri:0, instance:controlenotas.DisciplinaTest@58651fd0]" name="criarTabela" duration-ms="301" started-at="2018-06-25T23:04:01Z" finished-at="2018-06-25T23:04:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- criarTabela -->
-        <test-method status="PASS" signature="deletar()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="deletar" duration-ms="66" started-at="2018-06-24T22:41:15Z" depends-on-methods="controlenotas.AlunoTest.criarTabela" finished-at="2018-06-24T22:41:16Z">
+        <test-method status="PASS" signature="inserir()[pri:0, instance:controlenotas.DisciplinaTest@58651fd0]" name="inserir" duration-ms="21" started-at="2018-06-25T23:04:01Z" depends-on-methods="controlenotas.DisciplinaTest.criarTabela" finished-at="2018-06-25T23:04:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- inserir -->
+        <test-method status="PASS" signature="deletar()[pri:0, instance:controlenotas.DisciplinaTest@58651fd0]" name="deletar" duration-ms="19" started-at="2018-06-25T23:04:01Z" depends-on-methods="controlenotas.DisciplinaTest.inserir" finished-at="2018-06-25T23:04:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deletar -->
-        <test-method status="PASS" signature="listarPorID()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="listarPorID" duration-ms="6" started-at="2018-06-24T22:41:16Z" depends-on-methods="controlenotas.AlunoTest.criarTabela" finished-at="2018-06-24T22:41:16Z">
+        <test-method status="PASS" signature="listarPorID()[pri:0, instance:controlenotas.DisciplinaTest@58651fd0]" name="listarPorID" duration-ms="6" started-at="2018-06-25T23:04:01Z" depends-on-methods="controlenotas.DisciplinaTest.inserir" finished-at="2018-06-25T23:04:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- listarPorID -->
-        <test-method status="PASS" signature="listartodos()[pri:0, instance:controlenotas.AlunoTest@58651fd0]" name="listartodos" duration-ms="11" started-at="2018-06-24T22:41:16Z" depends-on-methods="controlenotas.AlunoTest.criarTabela" finished-at="2018-06-24T22:41:16Z">
+        <test-method status="PASS" signature="listartodos()[pri:0, instance:controlenotas.DisciplinaTest@58651fd0]" name="listartodos" duration-ms="5" started-at="2018-06-25T23:04:01Z" depends-on-methods="controlenotas.DisciplinaTest.inserir" finished-at="2018-06-25T23:04:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- listartodos -->
-      </class> <!-- controlenotas.AlunoTest -->
+        <test-method status="PASS" signature="alterar()[pri:0, instance:controlenotas.DisciplinaTest@58651fd0]" name="alterar" duration-ms="5" started-at="2018-06-25T23:04:01Z" depends-on-methods="controlenotas.DisciplinaTest.listarPorID" finished-at="2018-06-25T23:04:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- alterar -->
+      </class> <!-- controlenotas.DisciplinaTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

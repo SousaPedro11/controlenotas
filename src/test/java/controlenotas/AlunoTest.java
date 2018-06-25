@@ -16,7 +16,7 @@ public class AlunoTest {
         this.alunoDAO.criarDDL();
     }
 
-    @Test(dependsOnMethods = "criarTabela", enabled = false)
+    @Test(enabled = true)
     public void inserir() {
 
         final Aluno aluno = new Aluno();
@@ -27,7 +27,26 @@ public class AlunoTest {
         this.alunoDAO.inserir(aluno);
     }
 
-    @Test(dependsOnMethods = "criarTabela")
+    @Test(enabled = true)
+    public void alterar() {
+
+        final int cod = 6;
+        System.out.println("\nALTERAR REGISTRO: " + cod);
+        final Aluno aluno = new Aluno();
+        aluno.setCurso("CBCC");
+        aluno.setNome("Roberto");
+        aluno.setMatricula("201711150001");
+
+        try {
+            this.alunoDAO.buscarPor(cod);
+            this.alunoDAO.alterar(aluno, cod);
+            this.alunoDAO.buscarPor(cod);
+        } catch (final Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test(enabled = true)
     public void deletar() {
 
         final int cod = 12;
@@ -36,7 +55,7 @@ public class AlunoTest {
         this.alunoDAO.excluir(cod);
     }
 
-    @Test(dependsOnMethods = "criarTabela")
+    @Test(enabled = true)
     public void listarPorID() {
 
         final int cod = 10;
@@ -44,7 +63,7 @@ public class AlunoTest {
         this.alunoDAO.buscarPor(cod);
     }
 
-    @Test(dependsOnMethods = "criarTabela")
+    @Test(enabled = true)
     public void listartodos() {
 
         System.out.println("\nBUSCA TODOS");

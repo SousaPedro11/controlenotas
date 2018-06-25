@@ -3,8 +3,12 @@ package controlenotas.classes;
 import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Id;
+import controlenotas.annotations.Tabela;
+import lombok.EqualsAndHashCode;
 
-public class Disciplina {
+@EqualsAndHashCode
+@Tabela(schema = "controlenotas", nome = "disciplina")
+public class Disciplina extends ObjetoBase<Disciplina, Integer> {
 
     @Id
     @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
@@ -19,13 +23,17 @@ public class Disciplina {
     @AtribuirToString(prefixo = "Semestre: ", sufixo = "\n")
     private int semestre;
 
-    @Coluna(nome = "CH", tipo = "INT")
+    @Coluna(nome = "CARGAHORARIA", tipo = "INT")
     @AtribuirToString(prefixo = "CH: ", sufixo = "\n")
     private int cargahoraria;
 
-    private Turma turma;
+    @Coluna(nome = "PROFESSOR", tamanho = 80)
+    @AtribuirToString(prefixo = "Professor: ", sufixo = "\n")
+    private String professor;
 
-    private Professor professor;
+    @Coluna(nome = "TURMA", tamanho = 80)
+    @AtribuirToString(prefixo = "Turma: ", sufixo = "\n")
+    private String turma;
 
     public int getCod() {
 
@@ -45,26 +53,6 @@ public class Disciplina {
     public void setNome(final String nome) {
 
         this.nome = nome;
-    }
-
-    public Turma getTurma() {
-
-        return this.turma;
-    }
-
-    public void setTurma(final Turma turma) {
-
-        this.turma = turma;
-    }
-
-    public Professor getProfessor() {
-
-        return this.professor;
-    }
-
-    public void setProfessor(final Professor professor) {
-
-        this.professor = professor;
     }
 
     public int getSemestre() {
@@ -87,7 +75,24 @@ public class Disciplina {
         this.cargahoraria = cargahoraria;
     }
 
-    public void criaDisciplina() {
+    public String getProfessor() {
 
+        return this.professor;
     }
+
+    public String getTurma() {
+
+        return this.turma;
+    }
+
+    public void setProfessor(final String professor) {
+
+        this.professor = professor;
+    }
+
+    public void setTurma(final String turma) {
+
+        this.turma = turma;
+    }
+
 }
