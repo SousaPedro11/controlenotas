@@ -24,6 +24,7 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.DataType;
 import controlenotas.annotations.EnumType;
+import controlenotas.annotations.Fk;
 import controlenotas.annotations.IEntidade;
 import controlenotas.annotations.Id;
 import controlenotas.annotations.Tabela;
@@ -119,6 +120,20 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
                         }).collect(Collectors.joining(",\n")).replaceAll("\\s+", " ");
         ctH2.append(colunas).append("\n);");
 
+        final String fks = FieldUtils.getFieldsListWithAnnotation(this.getClasseEntidade(), Fk.class)
+                        .stream()
+                        .map(f -> {
+                            final StringBuilder fow = new StringBuilder();
+                            final Fk fk = f.getAnnotation(Fk.class);
+                            if (fk != null) {
+                                fow.append("FOREIGN KEY ");
+                                fow.append("(");
+                                fow.append(f.getName());
+                                fow.append(")");
+                                fow.append("REFERENCES");
+                            }
+                            return fow.toString();
+                        }).collect(Collectors.joining(",\n")).replaceAll("\\s+", " ");
         try (Statement statement = this.getConexao().createStatement()) {
 
             statement.execute(ctH2.toString());
