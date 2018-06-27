@@ -1,17 +1,25 @@
 package controlenotas.classes;
 
+import controlenotas.annotations.AtribuirToString;
+import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Fk;
 import controlenotas.annotations.Id;
 
 public class AlunoDisciplina extends ObjetoBase<AlunoDisciplina, Integer> {
 
     @Id
+    @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
+    @AtribuirToString(prefixo = "Cod: ", sufixo = "\n")
     private int cod;
 
-    @Fk
+    @Fk(referencia = "ALUNO")
+    @Coluna(nome = "COD_ALUNO", tipo = "SMALLINT")
+    @AtribuirToString(prefixo = "COD_ALUNO: ", sufixo = "\n")
     private int codAluno;
 
-    @Fk
+    @Fk(referencia = "DISCIPLINA")
+    @Coluna(nome = "COD_DISCIPLINA", tipo = "SMALLINT")
+    @AtribuirToString(prefixo = "COD_DISCIPLINA: ", sufixo = "\n")
     private int codDisciplina;
 
     public AlunoDisciplina() {

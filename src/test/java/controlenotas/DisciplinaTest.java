@@ -1,5 +1,9 @@
 package controlenotas;
 
+import java.util.Optional;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import controlenotas.DAO.BaseDAO;
@@ -10,65 +14,70 @@ public class DisciplinaTest {
 
     BaseDAO<Disciplina, Integer> disciplinaDAO = new DisciplinaDAO();
 
-    @Test
+    private int getTotalRegistros() {
+
+        return 10;
+    }
+
+    @BeforeClass
     public void criarTabela() {
 
         this.disciplinaDAO.criarDDL();
     }
 
-    @Test(dependsOnMethods = "criarTabela", enabled = true)
+    @Test
     public void inserir() {
 
-        final Disciplina disciplina = new Disciplina();
-        disciplina.setNome("OO");
-        disciplina.setSemestre(3);
-        disciplina.setCargahoraria(60);
-        disciplina.setProfessor("Gustavo");
-        disciplina.setTurma("2018.1");
+        // inserir multiplos registros
+        for (int i = 0; i < this.getTotalRegistros(); i++) {
 
-        this.disciplinaDAO.inserir(disciplina);
-    }
+            // final Disciplina disciplina = new Disciplina();
+            // disciplina.setDisciplina("OO");
+            // disciplina.setSemestre(3);
+            // disciplina.setCargahoraria(60);
+            // disciplina.setProfessor("Gustavo");
+            // disciplina.setTurma("2018.1");
 
-    @Test(dependsOnMethods = "inserir", enabled = true)
-    public void alterar() {
+            final Disciplina disciplina = new Disciplina("OO2", 3, 60, "Gustavo", "2018.2");
 
-        final int cod = 2;
-        System.out.println("\nALTERAR REGISTRO: " + cod);
-        final Disciplina disciplina = new Disciplina();
-        disciplina.setNome("TS");
-        disciplina.setSemestre(3);
-        disciplina.setCargahoraria(60);
-        disciplina.setProfessor("Lídio");
-        disciplina.setTurma("2018.1");
-
-        try {
-
-            System.out.println("Registro Atual");
-            this.disciplinaDAO.alterar(disciplina, cod);
-            this.disciplinaDAO.buscarPor(cod);
-        } catch (final Exception e) {
-            System.out.println(e.getMessage());
+            this.disciplinaDAO.inserir(disciplina);
         }
     }
 
-    @Test(dependsOnMethods = "inserir", enabled = true)
+    @Test(dependsOnMethods = "inserir")
+    public void alterar() {
+
+        final int cod = 3;
+        System.out.println("\nALTERAR REGISTRO: " + cod);
+        final Optional<Disciplina> optional = this.disciplinaDAO.buscarPor(cod, false);
+        Assert.assertTrue(optional.isPresent());
+
+        final Disciplina disciplina = optional.get();
+        disciplina.setCargahoraria(45);
+        disciplina.setProfessor("AlfredoMito");
+        disciplina.setTurma("2018.2");
+
+        this.disciplinaDAO.alterar(disciplina);
+    }
+
+    @Test(dependsOnMethods = "alterar")
     public void deletar() {
 
         final int cod = 1;
         System.out.println("\nDELETAR REGISTRO: " + cod);
-        this.disciplinaDAO.buscarPor(cod);
+        this.disciplinaDAO.buscarPor(cod, true);
         this.disciplinaDAO.excluir(cod);
     }
 
-    @Test(dependsOnMethods = "inserir", enabled = true)
+    @Test(dependsOnMethods = "alterar")
     public void listarPorID() {
 
         final int cod = 2;
         System.out.println("\nBUSCA POR COD = " + cod);
-        this.disciplinaDAO.buscarPor(cod);
+        this.disciplinaDAO.buscarPor(cod, true);
     }
 
-    @Test(dependsOnMethods = "inserir", enabled = true)
+    @Test(dependsOnMethods = "alterar")
     public void listartodos() {
 
         System.out.println("\nBUSCA TODOS");

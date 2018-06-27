@@ -1,15 +1,13 @@
 package controlenotas.DAO;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -19,21 +17,18 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import controlenotas.annotations.Coluna;
-import controlenotas.annotations.DataType;
-import controlenotas.annotations.EnumType;
-import controlenotas.annotations.Fk;
 import controlenotas.annotations.IEntidade;
 import controlenotas.annotations.Id;
 import controlenotas.annotations.Tabela;
 import controlenotas.jdbc.SingletonConexao;
 import controlenotas.jdbc.SingletonProperties;
 import controlenotas.jdbc.TipoConexao;
-import lombok.EqualsAndHashCode;
+import controlenotas.util.Reflexao;
 
-@EqualsAndHashCode
 public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
 
     /**
@@ -104,7 +99,6 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
 
                             final StringBuilder sb = new StringBuilder();
                             final Id id = f.getAnnotation(Id.class);
-
                             final Coluna coluna = f.getAnnotation(Coluna.class);
                             sb.append("\t").append(coluna.nome() + " ")
                                             .append(coluna.tipo());
@@ -120,20 +114,6 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
                         }).collect(Collectors.joining(",\n")).replaceAll("\\s+", " ");
         ctH2.append(colunas).append("\n);");
 
-        final String fks = FieldUtils.getFieldsListWithAnnotation(this.getClasseEntidade(), Fk.class)
-                        .stream()
-                        .map(f -> {
-                            final StringBuilder fow = new StringBuilder();
-                            final Fk fk = f.getAnnotation(Fk.class);
-                            if (fk != null) {
-                                fow.append("FOREIGN KEY ");
-                                fow.append("(");
-                                fow.append(f.getName());
-                                fow.append(")");
-                                fow.append("REFERENCES");
-                            }
-                            return fow.toString();
-                        }).collect(Collectors.joining(",\n")).replaceAll("\\s+", " ");
         try (Statement statement = this.getConexao().createStatement()) {
 
             statement.execute(ctH2.toString());
@@ -150,7 +130,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
      *
      * @param chavePrimaria
      */
-    public final void excluir(final Integer chavePrimaria) {
+    public final void excluir(final K chavePrimaria) {
 
         final StringBuilder sb = new StringBuilder();
         sb.append("DELETE FROM ").append(this.getNomeTabela());
@@ -158,7 +138,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
 
         try (PreparedStatement ps = this.getConexao().prepareStatement(sb.toString())) {
 
-            ps.setInt(1, chavePrimaria);
+            ps.setObject(1, chavePrimaria);
             ps.executeUpdate();
 
         } catch (final Exception e) {
@@ -184,9 +164,9 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
             while (rs.next()) {
                 lista.add(this.converter(rs));
             }
-            for (final T t : lista) {
-                System.out.println(t);
-            }
+
+            lista.forEach(System.out::println);
+
         } catch (final SQLException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
@@ -201,7 +181,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
      * @param chavePrimaria
      * @return Objeto contendo um registro, {@code Optional<T>}
      */
-    public final Optional<T> buscarPor(final K chavePrimaria) {
+    public final Optional<T> buscarPor(final K chavePrimaria, final boolean print) {
 
         Optional<T> t = Optional.empty();
         final StringBuilder sb = new StringBuilder();
@@ -217,7 +197,9 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
                 t = Optional.ofNullable(this.converter(rs));
             }
 
-            System.out.println(t.get());
+            if (print) {
+                System.out.println(t.get());
+            }
 
         } catch (final Exception e) {
             System.out.println(e.getMessage());
@@ -270,36 +252,83 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
         }
     }
 
-    public final void alterar(final T objeto, final K chavePrimaria) throws Exception {
+    public final boolean alterar(final T objeto) {
 
-        final Map<String, Object> mapa = new LinkedHashMap<>(Stream.of(objeto.getClass().getDeclaredFields())
-                        .filter(f -> !f.isAnnotationPresent(Id.class))
-                        .collect(Collectors.toMap(f -> f.getAnnotation(Coluna.class).nome(),
-                                        f -> {
-                                            Object valor = null;
-                                            try {
-                                                valor = FieldUtils.readDeclaredField(objeto, f.getName(), true);
-                                            } catch (final IllegalAccessException e) {
-                                                e.printStackTrace();
-                                            }
-                                            return valor;
-                                        })));
+        boolean alterado = false;
 
-        final StringBuilder sb = new StringBuilder();
-        sb.append("UPDATE ");
-        sb.append(this.getNomeTabela());
-        sb.append(" SET ");
-        sb.append(mapa.keySet()
-                        .stream()
-                        .map(x -> x + " = ?")
-                        .collect(Collectors.joining(", ")));
-        sb.append("WHERE COD = ?");
+        System.out.println("Registro da base:");
+        final Optional<T> optional = this.buscarPor(objeto.getChavePrimaria(), true);
+
+        if (optional.isPresent()) {
+
+            final T registroAntigo = optional.get();
+            final T registroNovo = objeto;
+            final List<Field> campos = Stream.of(this.getClasseEntidade().getDeclaredFields())
+                            .filter(f -> !this.isEquals(registroAntigo, registroNovo, f.getName()))
+                            .collect(Collectors.toList());
+
+            if (!campos.isEmpty()) {
+                alterado = true;
+                final StringBuilder sb = new StringBuilder();
+                sb.append("UPDATE ");
+                sb.append(this.getNomeTabela());
+                sb.append(" SET ");
+
+                sb.append(campos.stream()
+                                .map(f -> f.getAnnotation(Coluna.class).nome() + " = ?")
+                                .collect(Collectors.joining(", ")));
+
+                sb.append("WHERE ");
+                sb.append(Stream.of(this.getClasseEntidade().getDeclaredFields())
+                                .filter(f -> f.isAnnotationPresent(Id.class))
+                                .map(f -> f.getAnnotation(Coluna.class).nome() + " = ?").findAny().get());
+
+                try (PreparedStatement pstm = this.getConexao().prepareStatement(sb.toString())) {
+
+                    int contador = 1;
+
+                    for (final Field f : campos) {
+
+                        try {
+                            pstm.setObject(contador++, Reflexao.readDeclaredField(registroNovo, f.getName()));
+
+                        } catch (final IllegalAccessException e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+
+                    pstm.setObject(contador++, registroNovo.getChavePrimaria());
+                    pstm.executeUpdate();
+
+                } catch (final Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            System.out.println("Registro Atual:");
+            if (alterado) {
+                this.buscarPor(objeto.getChavePrimaria(), true);
+            } else {
+                System.out.println("Registro não mudou, valor inserido é igual ao da base");
+            }
+        }
+        return alterado;
+    }
+
+    private boolean isEquals(final T registroAntigo, final T registroNovo, final String nome) {
+
+        boolean isEquals = false;
 
         try {
-            this.cadastrarInterno(sb.toString(), mapa, chavePrimaria);
-        } catch (final Exception e) {
+            final Object valor1 = FieldUtils.readDeclaredField(registroAntigo, nome, true);
+            final Object valor2 = FieldUtils.readDeclaredField(registroNovo, nome, true);
+
+            isEquals = new EqualsBuilder().append(valor1, valor2).isEquals();
+
+        } catch (final IllegalAccessException e) {
             e.printStackTrace();
         }
+
+        return isEquals;
     }
 
     /**
@@ -313,7 +342,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
     public void cadastrar(final T objeto) throws Exception {
 
         if (objeto.getChavePrimaria() != null) {
-            this.alterar(objeto, objeto.getChavePrimaria());
+            this.alterar(objeto);
         } else {
             this.inserir(objeto);
         }
@@ -343,9 +372,9 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
 
                 if (valor instanceof java.sql.Date) {
 
-                    final java.sql.Date data = (valor == null) ? null
+                    final java.sql.Date data = (valor == null)
+                                    ? null
                                     : new java.sql.Date((long) valor);
-                    // : new java.sql.Date(((Date) valor).getTime());
                     pstm.setDate(contador++, data);
 
                 } else if (valor instanceof Enum) {
@@ -418,24 +447,19 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
                         .forEach(f -> {
                             try {
                                 f.setAccessible(true);
-                                if (f.isAnnotationPresent(DataType.class)) {
-                                    final DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                                    final String dataform = formatter.format(rs.getObject("nascimento"));
+                                final String nome = f.getAnnotation(Coluna.class).nome();
 
-                                    Date localDate;
-                                    try {
-                                        localDate = formatter.parse(dataform);
-                                        f.set(objeto, localDate);
-                                    } catch (final ParseException e) {
-                                        e.printStackTrace();
-                                    }
+                                if (Date.class.isAssignableFrom(f.getType())) {
 
-                                } else if (f.isAnnotationPresent(EnumType.class)) {
+                                    f.set(objeto, rs.getDate(nome));
 
-                                    f.set(objeto, Enum.valueOf((Class<Enum>) f.getType(), rs.getString(f.getName())));
+                                } else if (f.getType().isEnum()) {
+
+                                    f.set(objeto, Enum.valueOf((Class<Enum>) f.getType(), rs.getString(nome)));
 
                                 } else {
-                                    f.set(objeto, rs.getObject(f.getName()));
+
+                                    f.set(objeto, rs.getObject(nome));
                                 }
                             } catch (IllegalArgumentException | IllegalAccessException | SQLException e) {
                                 e.printStackTrace();
@@ -443,6 +467,5 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
                         });
 
         return objeto;
-
     }
 }

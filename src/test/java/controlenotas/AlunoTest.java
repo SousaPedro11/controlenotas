@@ -1,5 +1,9 @@
 package controlenotas;
 
+import java.util.Optional;
+
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import controlenotas.DAO.AlunoDAO;
@@ -10,60 +14,65 @@ public class AlunoTest {
 
     BaseDAO<Aluno, Integer> alunoDAO = new AlunoDAO();
 
-    @Test
+    private int getTotalRegistros() {
+
+        return 10;
+    }
+
+    @BeforeClass
     public void criarTabela() {
 
         this.alunoDAO.criarDDL();
     }
 
-    @Test(enabled = true)
+    @Test
     public void inserir() {
 
-        final Aluno aluno = new Aluno();
-        aluno.setNome("Pedro");
-        aluno.setCurso("CBSI");
-        aluno.setMatricula("201711140038");
+        // inserir multiplos registros
+        for (int i = 0; i < this.getTotalRegistros(); i++) {
 
-        this.alunoDAO.inserir(aluno);
-    }
+            final Aluno aluno = new Aluno();
+            aluno.setNome("Pedro");
+            aluno.setCurso("CBSI");
+            aluno.setMatricula("201711140038");
 
-    @Test(enabled = true)
-    public void alterar() {
-
-        final int cod = 6;
-        System.out.println("\nALTERAR REGISTRO: " + cod);
-        final Aluno aluno = new Aluno();
-        aluno.setCurso("CBCC");
-        aluno.setNome("Roberto");
-        aluno.setMatricula("201711150001");
-
-        try {
-            this.alunoDAO.buscarPor(cod);
-            this.alunoDAO.alterar(aluno, cod);
-            this.alunoDAO.buscarPor(cod);
-        } catch (final Exception e) {
-            System.out.println(e.getMessage());
+            this.alunoDAO.inserir(aluno);
         }
     }
 
-    @Test(enabled = true)
-    public void deletar() {
+    @Test(dependsOnMethods = "inserir")
+    public void alterar() {
 
-        final int cod = 12;
+        final int cod = 4;
+        System.out.println("\nALTERAR REGISTRO: " + cod);
+        final Optional<Aluno> optional = this.alunoDAO.buscarPor(cod, false);
+        Assert.assertTrue(optional.isPresent());
+
+        final Aluno aluno = optional.get();
+        aluno.setCurso("CBSI");
+        aluno.setNome("Pedro");
+
+        this.alunoDAO.alterar(aluno);
+    }
+
+    @Test(dependsOnMethods = "alterar")
+    public void excluir() {
+
+        final int cod = 1;
         System.out.println("\nDELETAR REGISTRO: " + cod);
-        this.alunoDAO.buscarPor(cod);
+        this.alunoDAO.buscarPor(cod, true);
         this.alunoDAO.excluir(cod);
     }
 
-    @Test(enabled = true)
-    public void listarPorID() {
+    @Test(dependsOnMethods = "alterar")
+    public void buscarPorChavePrimaria() {
 
-        final int cod = 10;
+        final int cod = 2;
         System.out.println("\nBUSCA POR COD = " + cod);
-        this.alunoDAO.buscarPor(cod);
+        this.alunoDAO.buscarPor(cod, true);
     }
 
-    @Test(enabled = true)
+    @Test(dependsOnMethods = "alterar")
     public void listartodos() {
 
         System.out.println("\nBUSCA TODOS");

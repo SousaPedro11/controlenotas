@@ -16,4 +16,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Fk {
 
+    String referencia();
+
+    String pkref() default "COD";
 }

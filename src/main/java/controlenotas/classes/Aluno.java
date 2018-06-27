@@ -10,23 +10,24 @@ public class Aluno extends Pessoa {
 
     @Id
     @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
-    @AtribuirToString(prefixo = "Cod: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "COD: ", sufixo = "\n")
     private int cod;
 
     @Coluna(nome = "NOME", tamanho = 80)
-    @AtribuirToString(prefixo = "Nome: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "NOME: ", sufixo = "\n")
     private String nome;
 
-    @AtribuirToString(prefixo = "Matricula: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "MATRICULA: ", sufixo = "\n")
     @Coluna(nome = "MATRICULA", tamanho = 20)
     private String matricula;
 
-    @AtribuirToString(prefixo = "Curso: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "CURSO: ", sufixo = "\n")
     @Coluna(nome = "CURSO", tamanho = 80)
     private String curso;
 
     public Aluno(final String nome, final String matricula, final String curso) {
         super(nome);
+        this.nome = nome;
         this.matricula = matricula;
         this.curso = curso;
     }

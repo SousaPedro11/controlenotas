@@ -3,11 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="controlenotas.DisciplinaTest">
+      <class name="controlenotas.AlunoTest">
         <methods>
+          <include name="alterar"/>
+          <include name="criarTabela"/>
+          <include name="buscarPorChavePrimaria"/>
           <include name="inserir"/>
+          <include name="excluir"/>
+          <include name="listartodos"/>
         </methods>
-      </class> <!-- controlenotas.DisciplinaTest -->
+      </class> <!-- controlenotas.AlunoTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
