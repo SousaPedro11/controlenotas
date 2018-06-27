@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Anotação criada para atribuir no ToString().
+ * Anotação criada para auxiliar a criacao de DDL.
  *
  * @author Pedro Sousa
  */

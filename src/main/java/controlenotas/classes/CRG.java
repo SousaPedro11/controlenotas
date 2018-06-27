@@ -1,5 +1,8 @@
 package controlenotas.classes;
 
-public class CRG {
+import java.util.List;
 
+public interface CRG {
+
+    public double calculaCRG(List<Notas> notas);
 }

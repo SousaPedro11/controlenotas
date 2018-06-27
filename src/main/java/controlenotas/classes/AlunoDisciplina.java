@@ -4,7 +4,9 @@ import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Fk;
 import controlenotas.annotations.Id;
+import controlenotas.annotations.Tabela;
 
+@Tabela(schema = "controlenotas", nome = "aluno_disciplina")
 public class AlunoDisciplina extends ObjetoBase<AlunoDisciplina, Integer> {
 
     @Id
@@ -12,12 +14,12 @@ public class AlunoDisciplina extends ObjetoBase<AlunoDisciplina, Integer> {
     @AtribuirToString(prefixo = "Cod: ", sufixo = "\n")
     private int cod;
 
-    @Fk(referencia = "ALUNO")
+    @Fk(tabelareferencia = "ALUNO")
     @Coluna(nome = "COD_ALUNO", tipo = "SMALLINT")
     @AtribuirToString(prefixo = "COD_ALUNO: ", sufixo = "\n")
     private int codAluno;
 
-    @Fk(referencia = "DISCIPLINA")
+    @Fk(tabelareferencia = "DISCIPLINA")
     @Coluna(nome = "COD_DISCIPLINA", tipo = "SMALLINT")
     @AtribuirToString(prefixo = "COD_DISCIPLINA: ", sufixo = "\n")
     private int codDisciplina;

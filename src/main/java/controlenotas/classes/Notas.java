@@ -1,18 +1,17 @@
 package controlenotas.classes;
 
-import java.util.Scanner;
-
 public class Notas {
 
-    private int[] notas;
+    private double nota;
 
-    Scanner scan = new Scanner(System.in);
+    public double getNota() {
 
-    public void lerNotas(final Disciplina disciplina, final int quantidade) {
-
-        for (int i = 0; i < quantidade; i++) {
-            System.out.println("Informe a " + i + "ª nota: ");
-            this.notas[i] = this.scan.nextInt();
-        }
+        return this.nota;
     }
+
+    public void setNota(final double nota) {
+
+        this.nota = nota;
+    }
+
 }

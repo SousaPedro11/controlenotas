@@ -1,12 +1,14 @@
 package controlenotas.classes;
 
+import java.util.List;
+
 import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Id;
 import controlenotas.annotations.Tabela;
 
 @Tabela(schema = "controlenotas", nome = "aluno")
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa implements CRG {
 
     @Id
     @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
@@ -24,6 +26,11 @@ public class Aluno extends Pessoa {
     @AtribuirToString(prefixo = "CURSO: ", sufixo = "\n")
     @Coluna(nome = "CURSO", tamanho = 80)
     private String curso;
+
+    @AtribuirToString(prefixo = "CRG: ", sufixo = "\n")
+    private double CRG;
+
+    List<Disciplina> disc;
 
     public Aluno(final String nome, final String matricula, final String curso) {
         super(nome);
@@ -82,4 +89,15 @@ public class Aluno extends Pessoa {
         this.curso = curso;
     }
 
+    public double getCRG() {
+
+        return this.CRG;
+    }
+
+    @Override
+    public double calculaCRG(final List<Notas> notas) {
+
+        // TODO Auto-generated method stub
+        return this.CRG;
+    }
 }

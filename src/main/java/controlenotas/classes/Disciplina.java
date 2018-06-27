@@ -1,8 +1,12 @@
 package controlenotas.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Id;
+import controlenotas.annotations.IgnorarHashcodeEquals;
 import controlenotas.annotations.Tabela;
 import lombok.EqualsAndHashCode;
 
@@ -34,6 +38,14 @@ public class Disciplina extends ObjetoBase<Disciplina, Integer> {
     @Coluna(nome = "TURMA", tamanho = 80)
     @AtribuirToString(prefixo = "TURMA: ", sufixo = "\n")
     private String turma;
+
+    @IgnorarHashcodeEquals
+    private int avaliacoes;
+
+    @IgnorarHashcodeEquals
+    Notas nota;
+
+    List<Double> notas = new ArrayList<>();
 
     public Disciplina() {
     }
@@ -116,6 +128,16 @@ public class Disciplina extends ObjetoBase<Disciplina, Integer> {
     public void setTurma(final String turma) {
 
         this.turma = turma;
+    }
+
+    public int getAvaliacoes() {
+
+        return this.avaliacoes;
+    }
+
+    public void setAvaliacoes(final int avaliacoes) {
+
+        this.avaliacoes = avaliacoes;
     }
 
 }

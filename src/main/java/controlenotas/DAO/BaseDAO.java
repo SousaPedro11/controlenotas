@@ -21,12 +21,13 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import controlenotas.annotations.Coluna;
-import controlenotas.annotations.IEntidade;
+import controlenotas.annotations.Fk;
 import controlenotas.annotations.Id;
 import controlenotas.annotations.Tabela;
 import controlenotas.jdbc.SingletonConexao;
 import controlenotas.jdbc.SingletonProperties;
 import controlenotas.jdbc.TipoConexao;
+import controlenotas.util.IEntidade;
 import controlenotas.util.Reflexao;
 
 public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
@@ -90,7 +91,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
         ctH2.append(tabela.schema().toUpperCase()).append(";\n");
 
         ctH2.append("CREATE TABLE IF NOT EXISTS ");
-        ctH2.append(tabela.schema()).append(".");
+        ctH2.append(tabela.schema().toUpperCase()).append(".");
         ctH2.append(tabela.nome().toUpperCase());
         ctH2.append(" (");
         final String colunas = FieldUtils.getFieldsListWithAnnotation(this.getClasseEntidade(), Coluna.class)
@@ -111,8 +112,35 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
                             sb.append(coluna.auto() ? " AUTO_INCREMENT " : " ")
                                             .append(coluna.nulo() ? " " : "NOT NULL ");
                             return sb.toString();
-                        }).collect(Collectors.joining(",\n")).replaceAll("\\s+", " ");
-        ctH2.append(colunas).append("\n);");
+                        }).collect(Collectors.joining("," + "\n")).replaceAll("\\s+", " ");
+        ctH2.append(colunas).append("\n);\n");
+
+        final String fks = FieldUtils.getFieldsListWithAnnotation(this.getClasseEntidade(), Coluna.class)
+                        .stream()
+                        .filter(f -> f.isAnnotationPresent(Fk.class))
+                        .map(f -> {
+
+                            final StringBuilder sb = new StringBuilder();
+                            final Fk fk = f.getAnnotation(Fk.class);
+                            final Coluna coluna = f.getAnnotation(Coluna.class);
+
+                            sb.append("ALTER TABLE ");
+                            sb.append(tabela.schema().toUpperCase()).append(".");
+                            sb.append(tabela.nome().toUpperCase());
+                            sb.append(" ADD");
+                            sb.append(" FOREIGN KEY").append(" (");
+                            sb.append(coluna.nome()).append(") ");
+                            sb.append("REFERENCES ");
+                            sb.append(fk.tabelareferencia()).append("(");
+                            sb.append(fk.chavereferencia()).append(")");
+                            return sb.toString();
+                        }).collect(Collectors.joining(";\n")).replaceAll("\\s+", " ");
+
+        if (!fks.isEmpty()) {
+
+            ctH2.append(fks).append("\n;");
+        }
+        System.out.println(ctH2);
 
         try (Statement statement = this.getConexao().createStatement()) {
 

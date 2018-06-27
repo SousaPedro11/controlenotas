@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Anotação criada para marcar PK.
+ * Auxilia na identificação de chave estrangeira da tabela.
  *
  * @author Pedro Sousa
  */
@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Fk {
 
-    String referencia();
+    String tabelareferencia();
 
-    String pkref() default "COD";
+    String chavereferencia() default "COD";
 }

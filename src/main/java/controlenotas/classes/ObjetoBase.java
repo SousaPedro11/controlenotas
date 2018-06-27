@@ -10,12 +10,23 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import controlenotas.annotations.AtribuirToString;
-import controlenotas.annotations.IEntidade;
 import controlenotas.annotations.Id;
 import controlenotas.annotations.IgnorarHashcodeEquals;
+import controlenotas.util.IEntidade;
 
+/**
+ * Classe que implementa, utilizando reflexão, métodos auxiliares a partir das Annotations definidas e da inteface IEntidade
+ *
+ * @author pedrosousa
+ *
+ * @param <T>
+ * @param <K>
+ */
 public class ObjetoBase<T, K extends Serializable> implements IEntidade<K> {
 
+    /**
+     * Sobrescrita do HashCode utilizando a Annotation IgnorarHashcodeEquals como filtro
+     */
     @Override
     public int hashCode() {
 
@@ -39,6 +50,9 @@ public class ObjetoBase<T, K extends Serializable> implements IEntidade<K> {
         return builder.toHashCode();
     }
 
+    /**
+     * Sobrescrita do Equals utilizando a Annotation IgnorarHashcodeEquals como filtro
+     */
     @Override
     @SuppressWarnings("unchecked")
     public boolean equals(final Object obj) {
@@ -76,6 +90,9 @@ public class ObjetoBase<T, K extends Serializable> implements IEntidade<K> {
         return builder.isEquals();
     }
 
+    /**
+     * Sobrescreve o toString utilizando a Annotation AtribuirToString como filtro
+     */
     @Override
     public String toString() {
 
@@ -97,6 +114,9 @@ public class ObjetoBase<T, K extends Serializable> implements IEntidade<K> {
         return builder.toString();
     }
 
+    /**
+     * Sobrescreve o método da interface IEntidade
+     */
     @Override
     @SuppressWarnings("unchecked")
     public K getChavePrimaria() {

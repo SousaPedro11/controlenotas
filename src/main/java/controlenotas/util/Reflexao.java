@@ -4,12 +4,15 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.stream.Stream;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
 
-import controlenotas.annotations.Coluna;
-
+/**
+ * Classe auxiliar para reflexão em outras classes a fim de diminuir repetição de código
+ *
+ * @author pedrosousa
+ *
+ */
 public class Reflexao {
 
     public static Object readDeclaredField(final Object instancia, final String nomeAtributo) throws IllegalAccessException {
@@ -38,19 +41,4 @@ public class Reflexao {
         return instance;
     }
 
-    public static <T> void modificar(final T entidade) {
-
-        final Object newvalue = null;
-
-        Stream.of(entidade.getClass().getDeclaredFields())
-                        .filter(f -> f.isAnnotationPresent(Coluna.class))
-                        .forEach(f -> {
-                            f.setAccessible(true);
-                            try {
-                                f.set(entidade, newvalue);
-                            } catch (IllegalArgumentException | IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        });
-    }
 }

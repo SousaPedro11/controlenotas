@@ -1,5 +1,7 @@
 package controlenotas.DAO;
 
-public class AlunoDisciplinaDAO {
+import controlenotas.classes.AlunoDisciplina;
+
+public class AlunoDisciplinaDAO extends BaseDAO<AlunoDisciplina, Integer> {
 
 }

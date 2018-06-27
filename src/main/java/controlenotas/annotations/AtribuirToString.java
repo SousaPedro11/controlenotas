@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Anotação criada para atribuir no ToString().
+ * Anotação criada para atribuir campos no ToString().
  *
  * @author Pedro Sousa
  */
@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AtribuirToString {
 
-	String prefixo() default "";
+    String prefixo() default "";
 
-	String sufixo() default "";
+    String sufixo() default "";
 }
