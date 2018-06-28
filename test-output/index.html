@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\Pedro\AppData\Local\Temp\testng-eclipse--180982340\testng-customsuite.xml</span>
+                    <span>C:\Users\Pedro\AppData\Local\Temp\testng-eclipse-384663129\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods,   3 passed</span>
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -107,7 +107,17 @@
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="controlenotas.AlunoDisciplinaTest" hash-for-method="inserir">inserir</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="controlenotas.AlunoDisciplinaTest" hash-for-method="inserirAluno">inserirAluno</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="controlenotas.AlunoDisciplinaTest" hash-for-method="inserirDisciplina">inserirDisciplina</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="controlenotas.AlunoDisciplinaTest" hash-for-method="inserirIntermediaria">inserirIntermediaria</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -142,9 +152,23 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="inserir">
-                  </a> <!-- inserir -->
-                  <span class="method-name">inserir</span>
+                  <a name="inserirAluno">
+                  </a> <!-- inserirAluno -->
+                  <span class="method-name">inserirAluno</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="inserirDisciplina">
+                  </a> <!-- inserirDisciplina -->
+                  <span class="method-name">inserirDisciplina</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="inserirIntermediaria">
+                  </a> <!-- inserirIntermediaria -->
+                  <span class="method-name">inserirIntermediaria</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -159,7 +183,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Pedro\AppData\Local\Temp\testng-eclipse--180982340\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Pedro\AppData\Local\Temp\testng-eclipse-384663129\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -208,24 +232,32 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(5);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'criarTabela')
 data.setCell(0, 2, 'controlenotas.AlunoDisciplinaTest')
-data.setCell(0, 3, 832);
+data.setCell(0, 3, 699);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'inserir')
+data.setCell(1, 1, 'listartodos')
 data.setCell(1, 2, 'controlenotas.AlunoDisciplinaTest')
-data.setCell(1, 3, 65);
+data.setCell(1, 3, 36);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'listartodos')
+data.setCell(2, 1, 'inserirAluno')
 data.setCell(2, 2, 'controlenotas.AlunoDisciplinaTest')
-data.setCell(2, 3, 39);
+data.setCell(2, 3, 33);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'inserirDisciplina')
+data.setCell(3, 2, 'controlenotas.AlunoDisciplinaTest')
+data.setCell(3, 3, 19);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'inserirIntermediaria')
+data.setCell(4, 2, 'controlenotas.AlunoDisciplinaTest')
+data.setCell(4, 3, 14);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 936 ms</span>
+              <span class="suite-total-time">Total running time: 801 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -257,12 +289,20 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">inserir</span>
-                <span class="method-start">838 ms</span>
+                <span class="method-name">inserirAluno</span>
+                <span class="method-start">704 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">inserirDisciplina</span>
+                <span class="method-start">743 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">inserirIntermediaria</span>
+                <span class="method-start">766 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">listartodos</span>
-                <span class="method-start">916 ms</span>
+                <span class="method-start">785 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

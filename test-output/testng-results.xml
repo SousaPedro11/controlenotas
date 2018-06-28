@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1018" started-at="2018-06-28T00:54:54Z" finished-at="2018-06-28T00:54:55Z">
+  <suite name="Default suite" duration-ms="882" started-at="2018-06-28T01:19:18Z" finished-at="2018-06-28T01:19:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1018" started-at="2018-06-28T00:54:54Z" finished-at="2018-06-28T00:54:55Z">
+    <test name="Default test" duration-ms="882" started-at="2018-06-28T01:19:18Z" finished-at="2018-06-28T01:19:19Z">
       <class name="controlenotas.AlunoDisciplinaTest">
-        <test-method status="PASS" signature="criarTabela()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="criarTabela" duration-ms="832" started-at="2018-06-28T00:54:54Z" finished-at="2018-06-28T00:54:55Z">
+        <test-method status="PASS" signature="criarTabela()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="criarTabela" duration-ms="699" started-at="2018-06-28T01:19:18Z" finished-at="2018-06-28T01:19:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- criarTabela -->
-        <test-method status="PASS" signature="inserir()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="inserir" duration-ms="65" started-at="2018-06-28T00:54:55Z" finished-at="2018-06-28T00:54:55Z">
+        <test-method status="PASS" signature="inserirAluno()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="inserirAluno" duration-ms="33" started-at="2018-06-28T01:19:18Z" finished-at="2018-06-28T01:19:18Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- inserir -->
-        <test-method status="PASS" signature="listartodos()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="listartodos" duration-ms="39" started-at="2018-06-28T00:54:55Z" depends-on-methods="controlenotas.AlunoDisciplinaTest.inserir" finished-at="2018-06-28T00:54:55Z">
+        </test-method> <!-- inserirAluno -->
+        <test-method status="PASS" signature="inserirDisciplina()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="inserirDisciplina" duration-ms="19" started-at="2018-06-28T01:19:18Z" depends-on-methods="controlenotas.AlunoDisciplinaTest.inserirAluno" finished-at="2018-06-28T01:19:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- inserirDisciplina -->
+        <test-method status="PASS" signature="inserirIntermediaria()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="inserirIntermediaria" duration-ms="14" started-at="2018-06-28T01:19:19Z" depends-on-methods="controlenotas.AlunoDisciplinaTest.inserirDisciplina" finished-at="2018-06-28T01:19:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- inserirIntermediaria -->
+        <test-method status="PASS" signature="listartodos()[pri:0, instance:controlenotas.AlunoDisciplinaTest@58651fd0]" name="listartodos" duration-ms="36" started-at="2018-06-28T01:19:19Z" depends-on-methods="controlenotas.AlunoDisciplinaTest.inserirIntermediaria" finished-at="2018-06-28T01:19:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- listartodos -->

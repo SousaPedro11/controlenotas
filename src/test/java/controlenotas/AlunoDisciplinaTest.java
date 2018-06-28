@@ -27,8 +27,7 @@ public class AlunoDisciplinaTest {
     }
 
     @Test
-    public void inserir() {
-        // Cadastrar Aluno
+    public void inserirAluno() {
 
         final Aluno aluno1 = new Aluno("Pedro", "201711140038", "CBSI");
 
@@ -37,7 +36,13 @@ public class AlunoDisciplinaTest {
         aluno2.setCurso("CBSI");
         aluno2.setMatricula("201711140037");
 
-        // Cadastrar Disciplina
+        this.alunoDAO.inserir(aluno1);
+        this.alunoDAO.inserir(aluno2);
+
+    }
+
+    @Test(dependsOnMethods = "inserirAluno")
+    public void inserirDisciplina() {
 
         final Disciplina disciplina1 = new Disciplina();
         disciplina1.setDisciplina("OO");
@@ -54,20 +59,23 @@ public class AlunoDisciplinaTest {
         final double d2 = disciplina2.calcularMedia();
         disciplina2.setMedia(d2);
 
+        this.disciplinaDAO.inserir(disciplina1);
+        this.disciplinaDAO.inserir(disciplina2);
+    }
+
+    @Test(dependsOnMethods = "inserirDisciplina")
+    public void inserirIntermediaria() {
+
         final AlunoDisciplina aluno1d1 = new AlunoDisciplina(1, 1);
         final AlunoDisciplina aluno1d2 = new AlunoDisciplina(1, 2);
         final AlunoDisciplina aluno2d1 = new AlunoDisciplina(2, 1);
 
-        this.alunoDAO.inserir(aluno1);
-        this.alunoDAO.inserir(aluno2);
-        this.disciplinaDAO.inserir(disciplina1);
-        this.disciplinaDAO.inserir(disciplina2);
         this.adDAO.inserir(aluno1d1);
         this.adDAO.inserir(aluno1d2);
         this.adDAO.inserir(aluno2d1);
     }
 
-    @Test(dependsOnMethods = "inserir")
+    @Test(dependsOnMethods = "inserirIntermediaria")
     public void listartodos() {
 
         System.out.println("\nBUSCA TODOS");
