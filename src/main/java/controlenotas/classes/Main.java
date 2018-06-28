@@ -34,8 +34,7 @@ public class Main {
 
         // Retornar Resultados
         // Mostrar Aluno
-        // Mostrar Disciplinas + notas + média
-        // Mostrar CRG
+        // Mostrar Disciplinas + média
     }
 
 }

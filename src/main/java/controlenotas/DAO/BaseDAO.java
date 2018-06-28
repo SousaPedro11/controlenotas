@@ -140,7 +140,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
 
             ctH2.append(fks).append("\n;");
         }
-        System.out.println(ctH2);
+        // System.out.println(ctH2);
 
         try (Statement statement = this.getConexao().createStatement()) {
 
@@ -182,7 +182,7 @@ public abstract class BaseDAO<T extends IEntidade<K>, K extends Serializable> {
      *
      * @return Lista de objetos, {@code List<object>}
      */
-    public final List<T> buscarTodos() {
+    public List<T> buscarTodos() {
 
         final List<T> lista = new ArrayList<>();
 

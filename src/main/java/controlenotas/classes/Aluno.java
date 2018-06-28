@@ -8,7 +8,7 @@ import controlenotas.annotations.Id;
 import controlenotas.annotations.Tabela;
 
 @Tabela(schema = "controlenotas", nome = "aluno")
-public class Aluno extends Pessoa implements CRG {
+public class Aluno extends Pessoa {
 
     @Id
     @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
@@ -94,10 +94,4 @@ public class Aluno extends Pessoa implements CRG {
         return this.CRG;
     }
 
-    @Override
-    public double calculaCRG(final List<Notas> notas) {
-
-        // TODO Auto-generated method stub
-        return this.CRG;
-    }
 }

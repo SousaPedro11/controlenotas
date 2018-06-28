@@ -20,6 +20,7 @@ public class DisciplinaTest {
     }
 
     @BeforeClass
+    @Test
     public void criarTabela() {
 
         this.disciplinaDAO.criarDDL();
@@ -39,9 +40,22 @@ public class DisciplinaTest {
             // disciplina.setTurma("2018.1");
 
             final Disciplina disciplina = new Disciplina("OO2", 3, 60, "Gustavo", "2018.2");
+            disciplina.insereNotas();
+            final double d = disciplina.calcularMedia();
+            disciplina.setMedia(d);
 
             this.disciplinaDAO.inserir(disciplina);
         }
+    }
+
+    @Test
+    public void calculaMedia() {
+
+        final Disciplina disciplina = new Disciplina("BD", 3, 60, "Sei Não", "2019.2");
+        disciplina.insereNotas();
+        final double d = disciplina.calcularMedia();
+        disciplina.setMedia(d);
+        System.out.println(disciplina);
     }
 
     @Test(dependsOnMethods = "inserir")

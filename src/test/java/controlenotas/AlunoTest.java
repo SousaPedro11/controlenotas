@@ -20,6 +20,7 @@ public class AlunoTest {
     }
 
     @BeforeClass
+    @Test
     public void criarTabela() {
 
         this.alunoDAO.criarDDL();

@@ -2,11 +2,12 @@ package controlenotas.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.Random;
 
 import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Id;
-import controlenotas.annotations.IgnorarHashcodeEquals;
 import controlenotas.annotations.Tabela;
 import lombok.EqualsAndHashCode;
 
@@ -16,36 +17,36 @@ public class Disciplina extends ObjetoBase<Disciplina, Integer> {
 
     @Id
     @Coluna(nome = "COD", tipo = "SMALLINT", auto = true)
-    @AtribuirToString(prefixo = "COD: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "Cod: ", sufixo = "\n")
     private int cod;
 
     @Coluna(nome = "DISCIPLINA", tamanho = 80)
-    @AtribuirToString(prefixo = "DISCIPLINA: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "Disciplina: ", sufixo = "\n")
     private String disciplina;
 
     @Coluna(nome = "SEMESTRE", tipo = "INT")
-    @AtribuirToString(prefixo = "SEMESTRE: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "Semestre: ", sufixo = "\n")
     private int semestre;
 
     @Coluna(nome = "CARGAHORARIA", tipo = "INT")
-    @AtribuirToString(prefixo = "CARGAHORARIA: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "CargaHoraria: ", sufixo = "\n")
     private int cargahoraria;
 
     @Coluna(nome = "PROFESSOR", tamanho = 80)
-    @AtribuirToString(prefixo = "PROFESSOR: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "Professor: ", sufixo = "\n")
     private String professor;
 
     @Coluna(nome = "TURMA", tamanho = 80)
-    @AtribuirToString(prefixo = "TURMA: ", sufixo = "\n")
+    @AtribuirToString(prefixo = "Turma: ", sufixo = "\n")
     private String turma;
 
-    @IgnorarHashcodeEquals
-    private int avaliacoes;
+    @Coluna(nome = "MEDIA", tipo = "DOUBLE")
+    @AtribuirToString(prefixo = "Media: ", sufixo = "\n")
+    private Double media;
 
-    @IgnorarHashcodeEquals
-    Notas nota;
+    private Integer soma;
 
-    List<Double> notas = new ArrayList<>();
+    private List<Double> notas = new ArrayList<>();
 
     public Disciplina() {
     }
@@ -130,14 +131,38 @@ public class Disciplina extends ObjetoBase<Disciplina, Integer> {
         this.turma = turma;
     }
 
-    public int getAvaliacoes() {
+    public List<Double> insereNotas() {
 
-        return this.avaliacoes;
+        final Random rand = new Random();
+        final List<Double> notaslocal = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            final double nota = rand.nextInt((10 - 0) + 1) + 0;
+            notaslocal.add(nota);
+        }
+        this.notas = notaslocal;
+        // System.out.println(this.notas);
+        return this.notas;
     }
 
-    public void setAvaliacoes(final int avaliacoes) {
+    public double getMedia() {
 
-        this.avaliacoes = avaliacoes;
+        return this.media;
     }
 
+    public void setMedia(Double media) {
+
+        media = this.calcularMedia();
+        this.media = media;
+    }
+
+    public Double calcularMedia() {
+
+        final OptionalDouble mediaDouble = this.notas
+                        .stream()
+                        .mapToDouble(a -> a)
+                        .average();
+
+        this.media = mediaDouble.getAsDouble();
+        return this.media;
+    }
 }
