@@ -13,11 +13,13 @@ notas, etc...)
 
 RETORNO ESPERADO:
 
-1 - Cálculo da conceito de acordo com a média da disciplina.
+1 - Cálculo da média de cada disciplina.
 
-2 - Cálculo do rendimento semestral de acordo com conceitos e cargas horária das disciplinas do semestre.
+2 - Cálculo da conceito de acordo com a média da disciplina.
 
-2 - Cálculo do CRG de acordo com os conceitos e cargas horaria de todas as disciplinas.
+3 - Cálculo do rendimento semestral de acordo com conceitos e cargas horária das disciplinas do semestre.
+
+4 - Cálculo do CRG de acordo com os conceitos e cargas horaria de todas as disciplinas.
 
 
 OBS:
