@@ -27,8 +27,8 @@ public class Aluno extends Pessoa {
     @Coluna(nome = "CURSO", tamanho = 80)
     private String curso;
 
-    @AtribuirToString(prefixo = "CRG: ", sufixo = "\n")
-    private double CRG;
+    // @AtribuirToString(prefixo = "CRG: ", sufixo = "\n")
+    // private double CRG;
 
     List<Disciplina> disc;
 
@@ -87,11 +87,6 @@ public class Aluno extends Pessoa {
     public void setCurso(final String curso) {
 
         this.curso = curso;
-    }
-
-    public double getCRG() {
-
-        return this.CRG;
     }
 
 }
