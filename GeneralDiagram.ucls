@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="controlenotas.DAO.BaseDAO" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/DAO/BaseDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="272" x="1113" y="-422"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="controlenotas.DAO.DisciplinaDAO" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/DAO/DisciplinaDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="104" x="1443" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="3" language="java" name="controlenotas.annotations.IgnorarHashcodeEquals" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/annotations/IgnorarHashcodeEquals.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="170" x="1647" y="1080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="4" language="java" name="controlenotas.classes.AlunoDisciplina" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/classes/AlunoDisciplina.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="147" x="1808" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="controlenotas.DAO.AlunoDAO" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/DAO/AlunoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="89" x="1293" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="controlenotas.DAO.AlunoDisciplinaDAO" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/DAO/AlunoDisciplinaDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="136" x="1807" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="controlenotas.classes.ObjetoBase" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/classes/ObjetoBase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="138" x="1629" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="controlenotas.jdbc.ConexaoBase" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/jdbc/ConexaoBase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="224" x="547" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="controlenotas.classes.Aluno" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/classes/Aluno.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="152" x="1359" y="491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="controlenotas.jdbc.Conexao" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/jdbc/Conexao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="224" x="373" y="491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="11" language="java" name="controlenotas.util.Reflexao" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/util/Reflexao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="217" x="269" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="12" language="java" name="controlenotas.jdbc.TipoConexao" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/jdbc/TipoConexao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="164" x="1174" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="13" language="java" name="controlenotas.jdbc.SingletonProperties" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/jdbc/SingletonProperties.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="216" x="526" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="14" language="java" name="controlenotas.annotations.Fk" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/annotations/Fk.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="145" x="1965" y="491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <annotation id="15" language="java" name="controlenotas.annotations.Tabela" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/annotations/Tabela.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="117" x="1490" y="1080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <interface id="16" language="java" name="controlenotas.util.IEntidade" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/util/IEntidade.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="118" x="1629" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <annotation id="17" language="java" name="controlenotas.annotations.AtribuirToString" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/annotations/AtribuirToString.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="117" x="1857" y="1080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <annotation id="18" language="java" name="controlenotas.annotations.Coluna" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/annotations/Coluna.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="117" x="1333" y="1080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="19" language="java" name="controlenotas.classes.Disciplina" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/classes/Disciplina.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="222" x="1572" y="491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="controlenotas.jdbc.SingletonConexao" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/jdbc/SingletonConexao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="290" x="792" y="-31"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="controlenotas.jdbc.ConexaoH2" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/jdbc/ConexaoH2.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="136" x="637" y="491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="22" language="java" name="controlenotas.annotations.Id" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/annotations/Id.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="63" width="117" x="2014" y="1080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="23" language="java" name="controlenotas.jdbc.ConexaoPostgreSQL" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/jdbc/ConexaoPostgreSQL.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="143" x="813" y="491"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="controlenotas.classes.Main" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/classes/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="1448" y="-561"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="controlenotas.classes.Pessoa" project="controlenotas" 
+    file="/controlenotas/src/main/java/controlenotas/classes/Pessoa.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="127" x="1441" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="26">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="27" name="instancia"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="29">    
+    <bendpoint x="1541" y="491"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="30">    
+    <bendpoint x="1410" y="190"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="31">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="32">    
+    <bendpoint x="801" y="190"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <dependency id="33">    
+    <bendpoint x="1845" y="491"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="37">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="38">    
+    <bendpoint x="1457" y="-422"/>    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="39">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="40">    
+    <bendpoint x="1985" y="190"/>    
+    <bendpoint x="1913" y="491"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="41">    
+    <bendpoint x="1436" y="-422"/>    
+    <bendpoint x="1412" y="-31"/>    
+    <bendpoint x="1389" y="190"/>    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="45">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="46" name="disciplina"/>      
+      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="48">    
+    <bendpoint x="1368" y="190"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="49">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="50">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="51">    
+    <bendpoint x="1415" y="-422"/>    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="52">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="53" name="aluno"/>      
+      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="56" name="instancia"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <dependency id="59">    
+    <bendpoint x="1122" y="-31"/>    
+    <bendpoint x="1122" y="190"/>    
+    <bendpoint x="1122" y="491"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="60">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="61">    
+    <bendpoint x="1973" y="-422"/>    
+    <bendpoint x="1973" y="-31"/>    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <realization id="62">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="65">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="66">    
+    <bendpoint x="1934" y="491"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="67">    
+    <bendpoint x="1577" y="-31"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <generalization id="68">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="69">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <dependency id="70">    
+    <bendpoint x="822" y="190"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <realization id="71">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <dependency id="72">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="73">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="74">    
+    <bendpoint x="1824" y="491"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <generalization id="76">    
+    <bendpoint x="1777" y="190"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="77">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <dependency id="78">    
+    <bendpoint x="1164" y="-31"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="79">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="80">    
+    <bendpoint x="1636" y="-422"/>    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <generalization id="81">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <dependency id="82">    
+    <bendpoint x="1598" y="-422"/>    
+    <bendpoint x="1598" y="-31"/>    
+    <bendpoint x="1598" y="190"/>    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="83">    
+    <bendpoint x="1143" y="-31"/>    
+    <bendpoint x="1143" y="190"/>    
+    <bendpoint x="1143" y="491"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="84">    
+    <bendpoint x="2140" y="190"/>    
+    <bendpoint x="2140" y="491"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="85">    
+    <bendpoint x="1866" y="491"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <generalization id="86">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

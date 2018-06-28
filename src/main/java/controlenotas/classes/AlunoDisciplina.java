@@ -1,9 +1,13 @@
 package controlenotas.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Fk;
 import controlenotas.annotations.Id;
+import controlenotas.annotations.IgnorarHashcodeEquals;
 import controlenotas.annotations.Tabela;
 
 @Tabela(schema = "controlenotas", nome = "aluno_disciplina")
@@ -23,6 +27,12 @@ public class AlunoDisciplina extends ObjetoBase<AlunoDisciplina, Integer> {
     @Coluna(nome = "COD_DISCIPLINA", tipo = "SMALLINT")
     @AtribuirToString(prefixo = "COD_DISCIPLINA: ", sufixo = "\n")
     private int codDisciplina;
+
+    @IgnorarHashcodeEquals
+    private final List<Aluno> aluno = new ArrayList<>();
+
+    @IgnorarHashcodeEquals
+    private final List<Disciplina> disciplina = new ArrayList<>();
 
     public AlunoDisciplina() {
 

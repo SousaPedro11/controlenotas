@@ -1,7 +1,5 @@
 package controlenotas.classes;
 
-import java.util.List;
-
 import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Id;
@@ -30,7 +28,7 @@ public class Aluno extends Pessoa {
     // @AtribuirToString(prefixo = "CRG: ", sufixo = "\n")
     // private double CRG;
 
-    List<Disciplina> disc;
+    // private List<Disciplina> disciplina;
 
     public Aluno(final String nome, final String matricula, final String curso) {
         super(nome);

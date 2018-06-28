@@ -8,6 +8,7 @@ import java.util.Random;
 import controlenotas.annotations.AtribuirToString;
 import controlenotas.annotations.Coluna;
 import controlenotas.annotations.Id;
+import controlenotas.annotations.IgnorarHashcodeEquals;
 import controlenotas.annotations.Tabela;
 import lombok.EqualsAndHashCode;
 
@@ -46,6 +47,9 @@ public class Disciplina extends ObjetoBase<Disciplina, Integer> {
 
     private Integer soma;
 
+    // private final List<Aluno> alunos = new ArrayList<>();
+
+    @IgnorarHashcodeEquals
     private List<Double> notas = new ArrayList<>();
 
     public Disciplina() {
