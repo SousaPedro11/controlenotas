@@ -104,8 +104,8 @@ Location (link): <http://www.objectaid.com/update/current>
 Caso ocorra erro com as configurações do Maven no Eclipse ao iniciar , use as seguintes soluções:
 1. Clique com o botão direito na pasta do projeto, selecione Maven -> Update Project, marque Force Update... e aperte OK
 2. Caso o erro persista(e apareça algo assim: Cold not calculate build plan: Plugin...)
-* Selecione Window -> Preferences e pesquise por Maven
-* Selecione User Settings e em global settings coloque o caminho correto para o arquivo settings.xml do Maven (ex: C:\desenvolvimento\builds\apache-maven-3.5.0\conf\settings.xml)
+2.1. Selecione Window -> Preferences e pesquise por Maven
+2.2. Selecione User Settings e em global settings coloque o caminho correto para o arquivo settings.xml do Maven (ex: C:\desenvolvimento\builds\apache-maven-3.5.0\conf\settings.xml)
 
 
 ## LINKS EXTERNOS
