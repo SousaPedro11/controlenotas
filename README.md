@@ -70,7 +70,7 @@ Name: ObjectAid UML Explorer
 Location (link): <http://www.objectaid.com/update/current>
 
 
-* Após instalar os programas devemos configurar o ambiente
++ Após instalar os programas devemos configurar o ambiente
 
 
 ### CONFIGURAÇÃO DO AMBIENTE
