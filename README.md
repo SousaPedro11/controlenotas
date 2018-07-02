@@ -37,18 +37,38 @@ Poderá ser implementada uma interface gráfica para facilitar o uso.
 
 3. ORACLE JAVA JDK 8_144
 
+4. TestNG
+
+5. ObjectAid UM Explorer
+
 
 ### INSTALAÇÃO DOS RECURSOS UTILIZADOS
-
+#### Java, Eclipse e Maven
 * Baixe o arquivo zip (nos LINKS EXTERNOS) contendo os programas nas versões informadas anteriormente (opcional)
 
 * De preferencia crie uma pasta na raiz do sistema para instalação do Eclipse e do Maven, ex: C:\\Desenvolvimento (opcional)
 
 * Instale o Oracle Java SDK no diretório de sua preferência, mas recomendo instalar na padrão do sistema.
 
-* Copie o diretório do eclipse para a pasta de sua escolha (recomendo na C:\\Desenvolvimento)
+* Descompacte e copie o diretório do eclipse para a pasta de sua escolha (recomendo na C:\\Desenvolvimento)
 
 * Instale o Apache Maven (Recomendo instalar em C:\\Desenvolvimento
+
+#### TestNG
+1. No Eclipse selecione Help -> Install New Software
+2. No campo Work With cole o link <http://beust.com/eclipse> e clique em add
+3. Insira o nome TestNG, clique Ok
+4. Espere carregar e assim que aparecer o TestNG, marque-o e clique em next
+5. Clique em next até aparecer para aceitar licenças, aceite e clique em finish
+6. Após iniciada a instalação poderá aparecer uma janela Security Warning, clique em Install Anyway e espere a instalação terminar
+7. Quando for terminada o eclipse pedirá para ser reiniciado, reinicie-o
+9. Ao ser aberto novamente o TestNG já poderá ser utilizado
+
+#### ObjectAid UML Explorer
+1. Siga praticamente os mesmos passos de instalação do TestNG, mas utilize os dados abaixo:
+Name: ObjectAid UML Explorer
+Location (link): <http://www.objectaid.com/update/current>
+
 
 * Após instalar os programas devemos configurar o ambiente
 
@@ -79,6 +99,13 @@ Poderá ser implementada uma interface gráfica para facilitar o uso.
 * No CMD digite mvn -version e aperte enter
 
 * Se o ambiente foi configurado com sucesso, aparecerá: Apache Maven, Maven home, Java version, Java home, Default locale e OS name
+
+### OBS:
+Caso ocorra erro com as configurações do Maven no Eclipse ao iniciar , use as seguintes soluções:
+1. Clique com o botão direito na pasta do projeto, selecione Maven -> Update Project, marque Force Update... e aperte OK
+2. Caso o erro persista(e apareça algo assim: Cold not calculate build plan: Plugin...)
+* Selecione Window -> Preferences e pesquise por Maven
+* Selecione User Settings e em global settings coloque o caminho correto para o arquivo settings.xml do Maven (ex: C:\desenvolvimento\builds\apache-maven-3.5.0\conf\settings.xml)
 
 
 ## LINKS EXTERNOS
