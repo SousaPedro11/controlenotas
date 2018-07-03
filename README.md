@@ -66,10 +66,8 @@ Poderá ser implementada uma interface gráfica para facilitar o uso.
 
 #### ObjectAid UML Explorer
 1. Siga praticamente os mesmos passos de instalação do TestNG, mas utilize os dados abaixo:
-
-Name: ObjectAid UML Explorer
-
-Location (link): <http://www.objectaid.com/update/current>
+	* Name: ObjectAid UML Explorer
+	* Location (link): <http://www.objectaid.com/update/current>
 
 
 + Após instalar os programas devemos configurar o ambiente
