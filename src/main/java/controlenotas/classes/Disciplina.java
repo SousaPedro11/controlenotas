@@ -53,6 +53,7 @@ public class Disciplina extends ObjetoBase<Disciplina, Integer> {
     private List<Double> notas = new ArrayList<>();
 
     public Disciplina() {
+
     }
 
     /**
@@ -68,6 +69,7 @@ public class Disciplina extends ObjetoBase<Disciplina, Integer> {
                     final int cargahoraria,
                     final String professor,
                     final String turma) {
+
         this.disciplina = disciplina;
         this.semestre = semestre;
         this.cargahoraria = cargahoraria;
