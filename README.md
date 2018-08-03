@@ -110,7 +110,7 @@ Caso ocorra erro com as configurações do Maven no Eclipse ao iniciar , use as 
 
 ## LINKS EXTERNOS
 
-[link do zip](https://mega.nz/#!9cBDGS6b!6jh7UylLNfZuHBnpB1ikw9Awi1vJx8plm_4N0GjMoVE){:target="_blank"}
+<a href="https://mega.nz/#!9cBDGS6b!6jh7UylLNfZuHBnpB1ikw9Awi1vJx8plm_4N0GjMoVE" target="_blank">link do zip</a>
 
 [Eclipse Neon](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neon3)
 
