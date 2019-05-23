@@ -1,0 +1,22 @@
+entity Aluno {
+	cod Integer,
+	nome String,
+    matricula String,
+    curso String
+}
+
+entity Disciplina {
+	cod Integer,
+    disciplina String,
+    semestre Integer,
+    ch Integer,
+    professor String,
+    turma String,
+    media Double,
+    soma Integer,
+    notas Double
+}
+
+relationship ManyToMany {
+	Aluno{disciplina(cod)} to Disciplina{cod}
+}
