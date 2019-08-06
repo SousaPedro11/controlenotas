@@ -1,4 +1,4 @@
-# CONTROLENOTAS
+# CONTROLENOTAS (Pendente)
 Projeto de controle pessoal de rendimento acadêmico.
 
 Este projeto tem por finalidade inicial, criar uma aplicação de gerenciamento pessoal de notas e rendimento acadêmico.
